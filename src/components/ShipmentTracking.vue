@@ -2,6 +2,15 @@
   <v-container class="fill-height">
     <v-row justify="center" align="center">
       <v-col cols="12" sm="10" md="8" lg="6">
+        <!-- Logo -->
+        <div class="text-center mb-6">
+          <img 
+            src="/logo.svg" 
+            alt="Sporttrader Logo" 
+            class="logo"
+          />
+        </div>
+
         <v-card elevation="8" class="mx-auto">
           <v-card-title class="text-h4 text-center py-6 bg-primary">
             <v-icon size="large" class="mr-2">mdi-package-variant</v-icon>
@@ -125,7 +134,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const API_BASE_URL = 'https://api.sporttrader.nl'
 
@@ -138,6 +147,18 @@ const loading = ref(false)
 const error = ref(null)
 const shipments = ref([])
 const searched = ref(false)
+
+// On mount, check if there's an order ID in the URL path
+onMounted(() => {
+  const path = window.location.pathname
+  // Extract order ID from path (e.g., /pl7737042305-B -> pl7737042305-B)
+  if (path && path !== '/') {
+    const orderIdFromUrl = path.substring(1).trim() // Remove leading slash
+    if (orderIdFromUrl) {
+      orderId.value = orderIdFromUrl
+    }
+  }
+})
 
 // Validation rules
 const rules = {
@@ -197,6 +218,16 @@ const trackShipment = async () => {
 <style scoped>
 .border {
   border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 </style>
 
