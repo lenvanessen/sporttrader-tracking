@@ -42,6 +42,42 @@ Set up your project using your preferred package manager. Use the corresponding 
 
 After completing the installation, your environment is ready for Vuetify development.
 
+## 🚀 Deploy to Netlify
+
+This project is pre-configured for Netlify deployment. You can deploy it in several ways:
+
+### Option 1: Deploy via Netlify UI
+
+1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+2. Log in to [Netlify](https://app.netlify.com/)
+3. Click "Add new site" → "Import an existing project"
+4. Select your repository
+5. Netlify will automatically detect the build settings from `netlify.toml`
+6. Click "Deploy site"
+
+### Option 2: Deploy with Netlify CLI
+
+```bash
+# Install Netlify CLI globally
+npm install -g netlify-cli
+
+# Login to Netlify
+netlify login
+
+# Deploy to Netlify
+netlify deploy --prod
+```
+
+### Build Configuration
+
+The repository includes a `netlify.toml` file with the following settings:
+- **Build command**: `npm run build`
+- **Publish directory**: `dist`
+- **Node version**: 18 (via `.nvmrc`)
+- **SPA routing**: Configured with redirects
+- **Security headers**: Included for production
+- **Asset caching**: Optimized for static assets
+
 ## ✨ Features
 
 - 🖼️ **Optimized Front-End Stack**: Leverage the latest Vue 3 and Vuetify 3 for a modern, reactive UI development experience. [Vue 3](https://v3.vuejs.org/) | [Vuetify 3](https://vuetifyjs.com/en/)
