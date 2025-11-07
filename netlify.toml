@@ -5,6 +5,9 @@
   # Directory with the static content compiled by the build command
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "20"
+
 # Redirect all requests to index.html for SPA routing
 [[redirects]]
   from = "/*"
